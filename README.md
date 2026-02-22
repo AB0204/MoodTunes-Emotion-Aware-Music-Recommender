@@ -188,8 +188,8 @@ graph TB
 
 1. **Clone repository**
    ```bash
-   git clone https://github.com/yourusername/Emotion-based-Music-Recommender.git
-   cd Emotion-based-Music-Recommender/Music-Recommender
+   git clone https://github.com/AB0204/MoodTunes-Emotion-Aware-Music-Recommender.git
+   cd MoodTunes-Emotion-Aware-Music-Recommender/Music-Recommender
    ```
 
 2. **Create virtual environment**
@@ -345,10 +345,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 **Abhi Bhardwaj**
 
 - 💼 LinkedIn: [linkedin.com/in/abhi-bhardwaj](https://linkedin.com/in/abhi-bhardwaj)
-- 📧 Email: abhi@example.com
-- 🌐 Portfolio: [yourportfolio.com](https://yourportfolio.com)
+- 🌐 GitHub: [github.com/AB0204](https://github.com/AB0204)
 
-**Project Link**: [github.com/yourusername/Emotion-based-Music-Recommender](https://github.com/yourusername/Emotion-based-Music-Recommender)
+**Project Link**: [github.com/AB0204/MoodTunes-Emotion-Aware-Music-Recommender](https://github.com/AB0204/MoodTunes-Emotion-Aware-Music-Recommender)
 
 ---
 
