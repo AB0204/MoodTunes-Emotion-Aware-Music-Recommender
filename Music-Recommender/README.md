@@ -1,41 +1,51 @@
-Multi-modal Knowledge Graph Convolutional Networks for Music Recommender System 
-# Emotion based Multimodal Music Recommendation System
-Implements a state-of-the-art multimodal music recommendation system using the Multimodal Knowledge Graph Convolutional Network (MKGCN) architecture.
+# 🎵 MoodTunes: Facial Emotion-Based Music Recommender
 
-## Features
-- **Multimodal Integration**: Utilizes multiple data modalities to capture rich information about songs.
-- **Advanced Recommendation Algorithm**: Employs the MKGCN architecture, which combines graph convolutional networks with multimodal embeddings to generate accurate and diverse recommendations.
-- **Interactive Interface**: Provides a user-friendly web interface powered by PyQt5, allowing users to input their preferences and receive personalized song recommendations in real-time.
+An intelligent, interactive music recommendation system that captures real-time facial expressions to predict user emotions and fetch customized, mood-matching playlists using the Spotify Web API.
 
-# Sequence to run the files
-1. For Multimodal-Knowledge Graph Convolutional Network 
-- Download this complete project and open in Visual Studio Code
-- Use Python == 3.6.5 
-- Run Configure_Data.ipynb 
-- Utils.ipynb 
-- EMKGCN Data Loader.ipynb
-- Multimodal_aggregator
-- Neighbor_Aggregator
-- Modal.ipynb (Make sure here you provide your system file path for (modal_0.tsv, modal_1.tsv....)
-- EMKGCN Main (Change the Model Directory Path based on your system file path)
+---
 
-2. Connecting with Spotify API for most updated results
-- Connect to venv3.11 (Use Command: cd path_to_your_directory then venv3.11\Scripts\activate)
-- Training_Spotipy
-- Spotipy.ipynb (This is will playlist for 7 specified emotions)
-- PyQt5.ipynb (Do use the paths specified from your system files)
-Executed!!
+## 🏗️ Architecture & Stack
 
-# Please do make sure while running any notebook/.py file if any library or framework is missing go to cmd in visual studio and use pip install (name) to install them and then rerun the code.
-# or you may google the missing libraries and use pip command from there.
+MoodTunes connects a deep learning vision pipeline with real-time web services and a desktop client:
 
+1. **Facial Emotion Classifier (Keras CNN):**
+   - Built on a Convolutional Neural Network (CNN) trained on facial expression datasets.
+   - Detects seven core human emotions: `Angry`, `Disgust`, `Fear`, `Happy`, `Sad`, `Surprise`, and `Neutral`.
+   - Utilizes OpenCV to capture real-time webcam frame sequences and run sliding-window face detection (Haar Cascade).
 
-### Required packages
-The code 1 has been tested running under Python 3.6.5, with the following packages installed (along with their dependencies):
-- pytorch == 2.0.0
-- numpy == 1.14.5
-- sklearn == 0.24.2
+2. **Spotify Integration (Spotipy API):**
+   - Connects to the Spotify Web API via OAuth token flows.
+   - Maps classified facial emotions directly to targeted Spotify audio features:
+     - **Happy / Surprise:** High Valence (positivity), High Energy.
+     - **Sad / Fear:** Lower Valence, Lower Tempo.
+     - **Angry:** High Energy, High Tempo.
+   - Dynamically aggregates playlists and fetches song IDs in real-time.
 
-Code 2 with Virtual Environment (Python=3.8)
+3. **Client Interface (PyQt5):**
+   - A desktop GUI showcasing live camera frames, real-time emotion classifications with confidence bars, and a dynamic recommendation feed with album artwork.
 
+---
 
+## 📂 Project Structure
+
+- `PyQt5.ipynb`: Desktop GUI code that coordinates OpenCV webcam streams, Keras models, and Spotify calls.
+- `Spotipy.ipynb` & `Training_Spotipy.ipynb`: Scripting to authenticate with Spotify and build recommendation filters.
+- `best_model.h5`: Saved pre-trained weights for the Keras CNN facial emotion classifier.
+- `Modal.ipynb`: Analysis notebook describing model exploration and system workflows.
+
+---
+
+## 🚀 Getting Started
+
+### 1. Requirements
+Ensure you are using Python 3.8+ inside a virtual environment:
+```bash
+pip install tensorflow keras opencv-python spotipy PyQt5 pandas numpy
+```
+
+### 2. Run the Desktop Client
+Activate your virtual environment and execute the PyQt5 GUI notebook cells or export to a script:
+```bash
+python -m ipykernel install --user --name=venv3.11
+# Or run the PyQt5 interface directly from VS Code
+```
